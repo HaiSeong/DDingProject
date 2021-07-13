@@ -19,7 +19,7 @@ from BusStation.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/', main),
+    path('/', main),
     path('getBusList/', getBusList),
     path('list/', list),
     path('check/', check),
