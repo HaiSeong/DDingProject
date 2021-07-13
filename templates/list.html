@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>버스 요청 목록</title>
+</head>
+<body>
+    <ul>
+        <li>stId | busRouteId | vehId1</li>
+        {% for call in callList %}
+            <li>{{ call.stId }} | {{ call.busRouteId }} | {{ call.vehId1 }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
