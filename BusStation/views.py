@@ -5,8 +5,9 @@ from DDingProject.getLowArrInfoByStIdList import *
 from BusStation.forms import *
 
 # Create your views here.
+def main(request):
+    return render(request, 'main.html')
 
-# Create your views here.
 def getBusList(request):
     if request.method == 'GET':
         arsId = request.GET.get('arsId')
