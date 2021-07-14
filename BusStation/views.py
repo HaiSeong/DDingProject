@@ -50,7 +50,6 @@ def check(request):
     isCalled = 'false'
     location=""
 
-
     if vehId in str(callList.values_list("vehId1")):
         call = Call.objects.filter(vehId1=vehId).order_by('id').first()
         isCalled = 'true'
