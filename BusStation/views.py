@@ -28,6 +28,8 @@ def getBusList(request):
         temp_dict['busRouteId'] = busRouteId
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
+        if vehId1 =='0':
+            return render(request, 'unable.html')
         temp_dict['vehId1'] = vehId1
         form=Form(temp_dict)
 
