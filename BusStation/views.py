@@ -51,7 +51,10 @@ def check(request):
     location=""
 
     if vehId in str(callList.values_list("vehId1")):
-        call = Call.objects.get(vehId1 = vehId)
+        for c in callList:
+            if c.vehId1 == vehId:
+                call = c
+                break
         isCalled = 'true'
         location = call.stId
         print(location, "번 정류장에서 요청을 받았습니다.", call, "을 삭제합니다.")
