@@ -28,6 +28,7 @@ def getBusList(request):
         temp_dict['busRouteId'] = busRouteId
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
+        print(vehId1)
         if str(vehId1) is '0':
             return render(request, 'unable.html')
         temp_dict['vehId1'] = vehId1
@@ -47,12 +48,12 @@ def list(request):
 
 def check(request):
     vehId = request.GET.get('vehId')
-    callList = Call.objects.all()
+    print(vehId)
 
     isCalled = 'false'
     location=""
 
-    if vehId in str(callList.values_list("vehId1")):
+    if vehId in str(Call.objects.values_list("vehId1")):
         call = Call.objects.filter(vehId1=vehId).order_by('id').first()
         isCalled = 'true'
         location = call.stId
