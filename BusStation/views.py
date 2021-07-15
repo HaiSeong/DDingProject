@@ -31,10 +31,8 @@ def getBusList(request):
         temp_dict['busRouteId'] = busRouteId
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
-
         print(vehId1)
-        print(type(vehId1))
-        if int(vehId1) == 0:
+        if str(vehId1) == '0':
             return render(request, 'unable.html')
         temp_dict['vehId1'] = vehId1
         form=Form(temp_dict)
@@ -52,26 +50,26 @@ def list(request):
 
 
 def check(request):
-    vehId1 = request.GET.get('vehId1')
-    print(vehId1)
+    vehId = request.GET.get('vehId')
+    print(vehId)
 
     isCalled = 'false'
-    stId=" "
-    stNm=" "
+    location = " " # == stId
+    stnNm = " "
 
-    if vehId1 in str(Call.objects.values_list("vehId1")):
-        call = Call.objects.filter(vehId1=vehId1).order_by('id').first()
+    if vehId in str(Call.objects.values_list("vehId1")):
+        call = Call.objects.filter(vehId1=vehId).order_by('id').first()
         isCalled = 'true'
-        stId = call.stId
-        stNm = call.stNm
-        print(stId, stNm, " 정류장에서 요청을 받았습니다.", call, "을 삭제합니다.")
+        location = call.stId
+        stnNm = call.stnNm
+        print(location, "번 정류장에서 요청을 받았습니다.", call, "을 삭제합니다.")
         call.delete()
 
 
     call = dict()
     call['isCalled'] = isCalled
-    call['stId'] = stId
-    call['stNm'] = stNm
+    call['location'] = location
+    call['stnNm'] = stnNm
     print(call)
 
 
