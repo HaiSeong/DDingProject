@@ -31,11 +31,16 @@ def getBusList(request):
         temp_dict['busRouteId'] = busRouteId
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
+        print(vehId1)
+        if str(vehId1) == str(0):
+            return render(request, 'unable.html')
         temp_dict['vehId1'] = vehId1
         form=Form(temp_dict)
 
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post = form
+            post.save()
             print(Call.objects.all().values())
             print(busRouteId)
             return render(request, 'selected.html', {'data':data})
