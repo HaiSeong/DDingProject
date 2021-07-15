@@ -36,9 +36,7 @@ def getBusList(request):
         form=Form(temp_dict)
 
         if form.is_valid():
-            post = form.save(commit=False)
-            post = form
-            post.save()
+            form.save()
             print(Call.objects.all().values())
             print(busRouteId)
             return render(request, 'selected.html', {'data':data})
