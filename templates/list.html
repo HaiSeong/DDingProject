@@ -6,9 +6,9 @@
 </head>
 <body>
     <ul>
-        <li>stId | busRouteId | vehId1</li>
+        <li>stId | stNm | busRouteId | vehId1</li>
         {% for call in callList %}
-            <li>{{ call.stId }} | {{ call.busRouteId }} | {{ call.vehId1 }}</li>
+            <li>{{ call.stId }} | {{ call.stNm }} | {{ call.busRouteId }} | {{ call.vehId1 }}</li>
         {% endfor %}
     </ul>
 </body>

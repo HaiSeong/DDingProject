@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from DDingProject.getLowStationByUid_return_json import *
-from DDingProject.getLowStationByUid_return_stId import *
+from DDingProject.getLowStationByUid_return_stId_and_stNm import *
 from DDingProject.getLowArrInfoByStIdList import *
 from BusStation.forms import *
 
@@ -19,12 +19,15 @@ def getBusList(request):
         busRoute = request.POST['busRoute']
         busRouteId = busRoute.split("'")[3]
 
-        dict_stId = getLowStationByUid_return_stId(arsId)
+        dict_stId = getLowStationByUid_return_stId_and_stNm(arsId)
         stId = dict_stId['stId']
+        stnNm = dict_stId['stnNm']
         print(stId)
+        print(stnNm)
 
         temp_dict = dict()
-        temp_dict['stId'] = dict_stId['stId']
+        temp_dict['stId'] = stId
+        temp_dict['stnNm'] = stnNm
         temp_dict['busRouteId'] = busRouteId
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
@@ -47,23 +50,26 @@ def list(request):
 
 
 def check(request):
-    vehId = request.GET.get('vehId')
-    print(vehId)
+    vehId1 = request.GET.get('vehId1')
+    print(vehId1)
 
     isCalled = 'false'
-    location=""
+    stId=" "
+    stNm=" "
 
-    if vehId in str(Call.objects.values_list("vehId1")):
-        call = Call.objects.filter(vehId1=vehId).order_by('id').first()
+    if vehId1 in str(Call.objects.values_list("vehId1")):
+        call = Call.objects.filter(vehId1=vehId1).order_by('id').first()
         isCalled = 'true'
-        location = call.stId
-        print(location, "번 정류장에서 요청을 받았습니다.", call, "을 삭제합니다.")
+        stId = call.stId
+        stNm = call.stNm
+        print(stId, stNm, " 정류장에서 요청을 받았습니다.", call, "을 삭제합니다.")
         call.delete()
 
 
     call = dict()
     call['isCalled'] = isCalled
-    call['location'] = location
+    call['stId'] = stId
+    call['stNm'] = stNm
     print(call)
 
 

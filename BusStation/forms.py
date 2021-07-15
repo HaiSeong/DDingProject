@@ -4,4 +4,4 @@ from BusStation.models import *
 class Form(ModelForm):
     class Meta:
         model = Call
-        fields=['stId','busRouteId','vehId1']
+        fields=['stId','stnNm','busRouteId','vehId1']

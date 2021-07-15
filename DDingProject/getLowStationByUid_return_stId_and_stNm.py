@@ -2,7 +2,7 @@
 import requests
 import xml.etree.ElementTree
 
-def getLowStationByUid_return_stId(arsId):
+def getLowStationByUid_return_stId_and_stNm(arsId):
     # api 인증키
     key = 'dswkIzbtmtoaVJONYr8kMHJBceWsS8B9SPs8zshw7LlAnQzhDCnNFSI48oQUeHTJBqtn%2FmD6S4i6HDSAUPQ2tQ%3D%3D'
 
@@ -23,6 +23,7 @@ def getLowStationByUid_return_stId(arsId):
     for i in itemList:
         if i.find("arsId").text == arsId:
             result_dict['stId'] = i.find("stId").text
+            result_dict['stnNm'] = i.find("stnNm").text
 
     print(result_dict)
     return result_dict
