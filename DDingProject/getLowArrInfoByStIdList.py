@@ -12,18 +12,21 @@ def getLowArrInfoByStIdList(stId, busRouteId):
 
     # xml 파싱을 위한 코드
     req_getLowArrInfoByStIdList = requests.get(url_getLowArrInfoByStIdList)
-    tree_getLowArrInfoByStIdList = xml.etree.ElementTree.fromstring(req_getLowArrInfoByStIdList.text)\
-
-
+    tree_getLowArrInfoByStIdList = xml.etree.ElementTree.fromstring(req_getLowArrInfoByStIdList.text)
     msgBody = tree_getLowArrInfoByStIdList.find("msgBody")
     itemList = msgBody.findall("itemList")
 
+    # 결과 출력을 위한 빈 딕셔너리 타입 생성
     result_dict = dict()
     for i in itemList:
         if busRouteId == i.find("busRouteId").text:
+            # 버스 번호판 번호
             result_dict['plainNo1'] = i.find("plainNo1").text
+            # 버스 식별 번호
             result_dict['vehId1'] = i.find("vehId1").text
+            # 남은 시간
             result_dict['exps1'] = i.find("exps1").text
+            # 노선 이름
             result_dict['rtNm'] = i.find("rtNm").text
 
     print(result_dict)

@@ -20,7 +20,13 @@ from BusStation.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', main),
+
+    # 버스 호출을 위한 페이지
     path('getBusList/', getBusList),
+
+    # 호출 요청을 보기위한 페이지
     path('list/', list),
+
+    # 버스가 호출을 받는 페이지
     path('check/', check),
 ]

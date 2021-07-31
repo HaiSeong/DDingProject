@@ -14,33 +14,6 @@ def getLowStationByUid_return_json(arsId):
     req_getLowStationByUid = requests.get(url_getLowStationByUid)
     tree_getLowStationByUid = xml.etree.ElementTree.fromstring(req_getLowStationByUid.text)
     print(req_getLowStationByUid.text)
-    '''
-    # 정류장의 버스노선ID, 버스노선명 리스트 추출
-    busRouteList =[]
-    msgBody = tree_getLowStationByUid.find("msgBody")
-    itemList = msgBody.findall("itemList")
-    for i in itemList: # 버스ID와 버스노선명을 튜플로 저장 : (ID, 노선명)
-        busRouteList.append(((i.find("busRouteId").text),i.find("busRouteNm").text))
-        
-    return busRouteList
-    ''''''
-    busRouteJson = []
-    msgBody = tree_getLowStationByUid.find("msgBody")
-    itemList = msgBody.findall("itemList")
-
-
-    for i in itemList:
-        temp_dict = {}
-        temp_dict['busRouteId'] = i.find("busRouteId").text
-        temp_dict['busRouteNm'] = i.find("busRouteNm").text
-        busRouteJson.append(temp_dict)
-
-    result = dict(zip(map(str,range(len(busRouteJson))), busRouteJson))
-    print(result)
-
-    return result
-'''
-
     busRouteList = []
     msgBody = tree_getLowStationByUid.find("msgBody")
     itemList = msgBody.findall("itemList")
@@ -48,7 +21,9 @@ def getLowStationByUid_return_json(arsId):
 
     for i in itemList:
         temp_dict = {}
+        # 버스 노선 아이디
         temp_dict['busRouteId'] = i.find("busRouteId").text
+        # 버스 루트 이름
         temp_dict['rtNm'] = i.find("rtNm").text
         busRouteList.append(temp_dict)
 
