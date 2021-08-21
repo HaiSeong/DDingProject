@@ -27,7 +27,7 @@ def getLowStationByUid_return_json(arsId):
         temp_dict['busRouteId'] = i.find("busRouteId").text
         # 버스 루트 이름
         temp_dict['rtNm'] = i.find("rtNm").text
-        
+
         busRouteList.append(temp_dict)
 
     result = {'busRouteList':busRouteList,'stnNm':stnNm}
