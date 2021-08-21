@@ -11,7 +11,7 @@
     {% csrf_token %}
     <select name="busRoute">
         {% for busRoute in busRouteList %}
-            <option value = '{{ busRoute }}'>{{ busRoute.rtNm }} </option>
+            <option value = '{{ busRoute }}'>{{ busRoute }} </option>
         {% endfor %}
     </select>
         <input type="submit">
