@@ -8,6 +8,11 @@
 <form action="" method="post">
     {% csrf_token %}
     <h1>여기는 {{ stnNm }} 정류소 입니다.</h1>
+    <h2>호출가능한 버스 목록은
+        {% for busRoute in busRouteList %}
+            {{ busRoute.rtNm }}
+        {% endfor %}
+    입니다.</h2>
     <h1>버스를 선택하세요.</h1>
     <select name="busRoute">
         {% for busRoute in busRouteList %}
