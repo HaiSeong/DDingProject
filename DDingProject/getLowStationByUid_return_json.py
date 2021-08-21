@@ -19,7 +19,7 @@ def getLowStationByUid_return_json(arsId):
     itemList = msgBody.findall("itemList")
 
     # 버스 정류소 이름
-    stnNm = itemList[0].find("stnNm").text
+    stnNm = msgBody.findall("itemList")
 
     for i in itemList:
         temp_dict = {}
