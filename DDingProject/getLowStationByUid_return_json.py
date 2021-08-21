@@ -18,6 +18,8 @@ def getLowStationByUid_return_json(arsId):
     msgBody = tree.find("msgBody")
     itemList = msgBody.findall("itemList")
 
+    item = msgBody.find("itemList")
+    stnNm = item.find("stnNm")
 
     for i in itemList:
         temp_dict = {}
@@ -25,11 +27,10 @@ def getLowStationByUid_return_json(arsId):
         temp_dict['busRouteId'] = i.find("busRouteId").text
         # 버스 루트 이름
         temp_dict['rtNm'] = i.find("rtNm").text
-        # 버스 정류소 이름
-        temp_dict['stnNm'] = i.find("stnNm").text
+        
         busRouteList.append(temp_dict)
 
-    result = {'stnNm':stnNm, 'busRouteList':busRouteList}
+    result = {'busRouteList':busRouteList,'stnNm':stnNm}
     print(result)
 
     return result
