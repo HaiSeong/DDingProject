@@ -7,7 +7,7 @@
 <body>
 <form action="" method="post">
     {% csrf_token %}
-    <h1>여기는 {{ stnNm }}정류소 입니다.</h1>
+    <h1>여기는 {{ busRouteList }}정류소 입니다.</h1>
     <h1>버스를 선택하세요.</h1>
     <select name="busRoute">
         {% for busRoute in busRouteList %}
