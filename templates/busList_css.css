@@ -1,0 +1,82 @@
+.wrap * {
+    margin: 0;
+    padding: 0;
+}
+.wrap ul li,
+.wrap ol li {
+    list-style: none;
+}
+.select_box {
+    margin: 20px;
+}
+.select_box .box {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+}
+.select_box .box .select {
+    position: relative;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 35px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.select_box .box .select:after {
+    content: '▼';
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+.select_box.on .box .select:after {
+    content: '▲';
+}
+.select_box .box .list {
+    display: none;
+    overflow-y: auto;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 10;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    padding: 10px 0;
+    width: 100%;
+    max-height: 200px;
+    background-color: #fff;
+}
+.select_box .box .list::-webkit-scrollbar {
+    width: 10px;
+    height: 0;
+}
+.select_box .box .list::-webkit-scrollbar-button:start:decrement,
+.select_box .box .list::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 0;
+}
+.select_box .box .list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .05);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.select_box .box .list::-webkit-scrollbar-thumb {
+    height: 50px;
+    width: 50px;
+    background: rgba(0, 0, 0, .2);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.select_box .box .list>li {
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+}
+.select_box .box .list>li:hover {
+    background-color: #ccc;
+}

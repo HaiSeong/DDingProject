@@ -7,13 +7,13 @@ def getLowArrInfoByStIdList(stId, busRouteId):
     key = 'dswkIzbtmtoaVJONYr8kMHJBceWsS8B9SPs8zshw7LlAnQzhDCnNFSI48oQUeHTJBqtn%2FmD6S4i6HDSAUPQ2tQ%3D%3D'
 
     # getRouteByStation api 호출
-    queryParams_getLowArrInfoByStIdList = 'ServiceKey=' + key + '&stId=' + stId
-    url_getLowArrInfoByStIdList = 'http://ws.bus.go.kr/api/rest/arrive/getLowArrInfoByStId?' + queryParams_getLowArrInfoByStIdList
+    queryParams = 'ServiceKey=' + key + '&stId=' + stId
+    url = 'http://ws.bus.go.kr/api/rest/arrive/getLowArrInfoByStId?' + queryParams
 
     # xml 파싱을 위한 코드
-    req_getLowArrInfoByStIdList = requests.get(url_getLowArrInfoByStIdList)
-    tree_getLowArrInfoByStIdList = xml.etree.ElementTree.fromstring(req_getLowArrInfoByStIdList.text)
-    msgBody = tree_getLowArrInfoByStIdList.find("msgBody")
+    req = requests.get(url)
+    tree = xml.etree.ElementTree.fromstring(req.text)
+    msgBody = tree.find("msgBody")
     itemList = msgBody.findall("itemList")
 
     # 결과 출력을 위한 빈 딕셔너리 타입 생성
@@ -31,3 +31,4 @@ def getLowArrInfoByStIdList(stId, busRouteId):
 
     print(result_dict)
     return result_dict
+
