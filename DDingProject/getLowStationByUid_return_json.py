@@ -19,7 +19,7 @@ def getLowStationByUid_return_json(arsId):
     itemList = msgBody.findall("itemList")
 
     item = msgBody.find("itemList")
-    stnNm = item.find("stnNm")
+    stnNm = item.find("rtMm")
 
     for i in itemList:
         temp_dict = {}
