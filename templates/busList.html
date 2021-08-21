@@ -6,12 +6,12 @@
 </head>
 <body>
 <form action="" method="post">
-    <h1>여기는 {{ stnNm }}정류소 입니다.</h1>
+    <h1>여기는 {{ busRouteList }}정류소 입니다.</h1>
     <h1>버스를 선택하세요.</h1>
     {% csrf_token %}
     <select name="busRoute">
         {% for busRoute in busRouteList %}
-            <option value = '{{ busRoute }}'>{{ busRoute }} </option>
+            <option value = '{{ busRoute }}'>{{ busRoute.rtNm }} </option>
         {% endfor %}
     </select>
         <input type="submit">
