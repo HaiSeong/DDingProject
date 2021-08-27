@@ -14,6 +14,7 @@ def getBusList(request):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # getLowStationByUid_return_json함수 사용
         # (arsId를 인자로 받아서 busRouteId(버스 노선 아이디)와
         # rtNm(버스 노선 이름)을 딕셔너리 타입으로 반환해주는 함수)
@@ -23,6 +24,8 @@ def getBusList(request):
 >>>>>>> parent of 6aa3792 (com)
 =======
 >>>>>>> parent of 6aa3792 (com)
+=======
+>>>>>>> parent of 6aa3792b (com)
         result = getLowStationByUid_return_json(arsId)
         return render(request, 'busList.html', result)
 
@@ -31,6 +34,7 @@ def getBusList(request):
         busRoute = request.POST['busRoute']
         busRouteId = busRoute.split("'")[3]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -43,6 +47,8 @@ def getBusList(request):
 >>>>>>> parent of 6aa3792 (com)
 =======
 >>>>>>> parent of 6aa3792 (com)
+=======
+>>>>>>> parent of 6aa3792b (com)
         dict_stId = getLowStationByUid_return_stId_and_stNm(arsId)
         stId = dict_stId['stId']
         stnNm = dict_stId['stnNm']
@@ -56,6 +62,7 @@ def getBusList(request):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # getLowArrInfoByStIdList 사용
         # (stId와 busRouteId를 인자로 받아서
         # plainNo1(버스 번호판 번호), vehId1(버스 식별 번호)
@@ -66,6 +73,8 @@ def getBusList(request):
 >>>>>>> parent of 6aa3792 (com)
 =======
 >>>>>>> parent of 6aa3792 (com)
+=======
+>>>>>>> parent of 6aa3792b (com)
         data = getLowArrInfoByStIdList(stId,busRouteId)
         vehId1 = data['vehId1']
         print(vehId1)

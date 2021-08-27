@@ -32,9 +32,12 @@ def getLowStationByUid_return_json(arsId):
     busRouteJson = []
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 6aa3792 (com)
+=======
+>>>>>>> parent of 6aa3792b (com)
     msgBody = tree_getLowStationByUid.find("msgBody")
     itemList = msgBody.findall("itemList")
 
@@ -60,6 +63,7 @@ def getLowStationByUid_return_json(arsId):
     for i in itemList:
         temp_dict = {}
         temp_dict['busRouteId'] = i.find("busRouteId").text
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         temp_dict['busRouteNm'] = i.find("busRouteNm").text
@@ -86,6 +90,8 @@ def getLowStationByUid_return_json(arsId):
 >>>>>>> parent of 6aa3792 (com)
 =======
 >>>>>>> parent of 6aa3792 (com)
+=======
+>>>>>>> parent of 6aa3792b (com)
         temp_dict['rtNm'] = i.find("rtNm").text
 
         busRouteList.append(temp_dict)
