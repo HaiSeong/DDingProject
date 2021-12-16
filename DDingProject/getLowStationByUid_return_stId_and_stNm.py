@@ -11,19 +11,18 @@ def getLowStationByUid_return_stId_and_stNm(arsId):
     url = 'http://ws.bus.go.kr/api/rest/stationinfo/getLowStationByUid?' + queryParams
 
     # xml 파싱을 위한 코드
-<<<<<<< HEAD
     req = requests.get(url)
     tree = xml.etree.ElementTree.fromstring(req.text)
     print(req.text)
     msgBody = tree.find("msgBody")
-=======
+
     req_getLowStationByUid = requests.get(url_getLowStationByUid)
     tree_getLowStationByUid = xml.etree.ElementTree.fromstring(req_getLowStationByUid.text)
     print(req_getLowStationByUid.text)
 
     busRouteList = []
     msgBody = tree_getLowStationByUid.find("msgBody")
->>>>>>> parent of 6aa3792 (com)
+
     itemList = msgBody.findall("itemList")
 
     result_dict = dict()

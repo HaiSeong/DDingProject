@@ -11,17 +11,14 @@ def getLowArrInfoByStIdList(stId, busRouteId):
     url = 'http://ws.bus.go.kr/api/rest/arrive/getLowArrInfoByStId?' + queryParams
 
     # xml 파싱을 위한 코드
-<<<<<<< HEAD
     req = requests.get(url)
     tree = xml.etree.ElementTree.fromstring(req.text)
     msgBody = tree.find("msgBody")
-=======
     req_getLowArrInfoByStIdList = requests.get(url_getLowArrInfoByStIdList)
     tree_getLowArrInfoByStIdList = xml.etree.ElementTree.fromstring(req_getLowArrInfoByStIdList.text)\
 
 
     msgBody = tree_getLowArrInfoByStIdList.find("msgBody")
->>>>>>> parent of 6aa3792 (com)
     itemList = msgBody.findall("itemList")
 
     result_dict = dict()
